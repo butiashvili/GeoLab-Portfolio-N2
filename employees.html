@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="portfolio.css" />
+    <script>
+      if (localStorage.getItem("portfolio-theme") === "light") {
+        document.documentElement.classList.add("light-mode");
+      }
+    </script>
+    <style>
+    </style>
+    <title>თანამშრომლები | ნიკოლოზის პორტფოლიო</title>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <div class="flex min-h-screen flex-col">
+      <header class="site-header border-b border-white/10 bg-slate-950/80">
+        <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-6">
+          <a href="index.html" class="brand-mark" aria-label="ნიკოლოზის პორტფოლიო — მთავარი">
+            <span class="brand-symbol" aria-hidden="true">&lt;/&gt;</span><span class="brand-name">ნიკოლოზის <span>პორტფოლიო</span></span>
+          </a>
+          <div class="flex items-center gap-2 sm:order-last sm:gap-3">
+            <button type="button" data-menu-toggle aria-expanded="false" aria-controls="main-navigation" aria-label="მენიუს გახსნა" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-400 sm:hidden">
+              <svg data-menu-open-icon aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg data-menu-close-icon aria-hidden="true" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
+            <button type="button" data-theme-toggle aria-label="ღია რეჟიმზე გადართვა" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-400 sm:px-4">
+              <span data-theme-icon aria-hidden="true">☀</span>
+              <span data-theme-label class="hidden sm:inline">ღია რეჟიმი</span>
+            </button>
+          </div>
+          <nav id="main-navigation" aria-label="მთავარი ნავიგაცია" class="hidden w-full rounded-2xl border border-white/10 bg-white/5 p-2 sm:block sm:w-auto sm:border-0 sm:bg-transparent sm:p-0">
+            <ul class="flex flex-col gap-1 text-sm font-medium sm:flex-row sm:gap-2">
+              <li><a href="index.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">მთავარი</a></li>
+              <li><a href="project.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">პროექტები</a></li>
+              <li><a href="employees.html" aria-current="page" class="block rounded-xl bg-violet-500/15 px-4 py-3 text-violet-300 transition hover:bg-violet-500/25 sm:rounded-full sm:py-2">თანამშრომლები</a></li>
+              <li><a href="contact.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">კონტაქტი</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6 sm:py-20">
+        <section>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">ჩვენი გუნდი</p>
+          <h1 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-5xl">თანამშრომლები</h1>
+          <p class="mt-4 max-w-2xl leading-7 text-slate-400">სია იტვირთება JSONPlaceholder-ის API-დან.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+            <div>
+              <label for="employee-search" class="block text-sm font-medium text-slate-300">თანამშრომლის ძიება</label>
+              <input id="employee-search" data-employee-search type="search" placeholder="სახელი, ელ-ფოსტა ან კომპანია" class="mt-2 w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none placeholder:text-slate-500 focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20" />
+            </div>
+            <div>
+              <label for="employee-sort" class="block text-sm font-medium text-slate-300">დალაგება</label>
+              <select id="employee-sort" data-employee-sort class="mt-2 w-full rounded-xl border border-white/10 bg-slate-900 px-4 py-3 text-white outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-400/20">
+                <option value="name">სახელით</option>
+                <option value="company">კომპანიით</option>
+              </select>
+            </div>
+          </div>
+          <p data-employee-status role="status" aria-live="polite" class="mt-4 text-sm text-slate-400">თანამშრომლები იტვირთება...</p>
+          <div data-employees class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+        </section>
+        <section class="mt-16 border-t border-white/10 pt-10">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">დამატებითი ფუნქცია · PATCH</p>
+          <h2 class="mt-2 text-2xl font-bold text-white sm:text-3xl">დავალებების სია</h2>
+          <p class="mt-3 leading-7 text-slate-400">JSONPlaceholder-ის PATCH მეთოდით შეცვალეთ დავალების შესრულების სტატუსი.</p>
+          <p data-todo-status role="status" aria-live="polite" class="mt-4 text-sm text-slate-400">დავალებები იტვირთება...</p>
+          <ul data-todo-list class="mt-4 grid gap-3"></ul>
+        </section>
+      </main>
+      <footer class="border-t border-white/10 px-6 py-6 text-center text-sm text-slate-500">
+        <p>&copy; 2026 ნიკოლოზი. ყველა უფლება დაცულია.</p>
+      </footer>
+    </div>
+    <script src="portfolio.js"></script>
+  </body>
+</html>

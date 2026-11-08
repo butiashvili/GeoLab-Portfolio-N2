@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="portfolio.css" />
+    <script>
+      if (localStorage.getItem("portfolio-theme") === "light") {
+        document.documentElement.classList.add("light-mode");
+      }
+    </script>
+    <style>
+      html.light-mode input,
+      html.light-mode textarea { background-color: #fff; color: #0f172a; }
+      html.light-mode input::placeholder,
+      html.light-mode textarea::placeholder { color: #94a3b8; }
+      body::before {
+        position: fixed; z-index: -1; top: -10rem; right: -8rem; width: 28rem; height: 28rem;
+        border-radius: 9999px; background: radial-gradient(circle, rgb(139 92 246 / 14%), transparent 70%);
+        content: ""; pointer-events: none; animation: ambient-drift 12s ease-in-out infinite alternate;
+      }
+      main > section, main article, main li { animation: rise-in 700ms ease-out backwards; }
+      main article:nth-child(2), main li:nth-child(2) { animation-delay: 100ms; }
+      main article:nth-child(3), main li:nth-child(3) { animation-delay: 200ms; }
+      @keyframes rise-in {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes ambient-drift {
+        from { transform: translate3d(0, 0, 0); }
+        to { transform: translate3d(-2rem, 2rem, 0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      }
+    </style>
+    <title>პროექტები | ნიკოლოზის პორტფოლიო</title>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <div class="flex min-h-screen flex-col">
+      <header class="site-header border-b border-white/10 bg-slate-950/80">
+        <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-6">
+          <a href="index.html" class="brand-mark" aria-label="ნიკოლოზის პორტფოლიო — მთავარი">
+            <span class="brand-symbol" aria-hidden="true">&lt;/&gt;</span><span class="brand-name">ნიკოლოზის <span>პორტფოლიო</span></span>
+          </a>
+          <div class="flex items-center gap-2 sm:order-last sm:gap-3">
+            <button type="button" data-menu-toggle aria-expanded="false" aria-controls="main-navigation" aria-label="მენიუს გახსნა" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-400 sm:hidden">
+              <svg data-menu-open-icon aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg data-menu-close-icon aria-hidden="true" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
+            <button type="button" data-theme-toggle aria-label="ღია რეჟიმზე გადართვა" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-400 sm:px-4">
+              <span data-theme-icon aria-hidden="true">☀</span>
+              <span data-theme-label class="hidden sm:inline">ღია რეჟიმი</span>
+            </button>
+          </div>
+          <nav id="main-navigation" aria-label="მთავარი ნავიგაცია" class="hidden w-full rounded-2xl border border-white/10 bg-white/5 p-2 sm:block sm:w-auto sm:border-0 sm:bg-transparent sm:p-0">
+              <ul class="flex flex-col gap-1 text-sm font-medium sm:flex-row sm:gap-2">
+                <li><a href="index.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">მთავარი</a></li>
+                <li><a href="project.html" aria-current="page" class="block rounded-xl bg-violet-500/15 px-4 py-3 text-violet-300 transition hover:bg-violet-500/25 sm:rounded-full sm:py-2">პროექტები</a></li>
+                <li><a href="employees.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">თანამშრომლები</a></li>
+                <li><a href="contact.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">კონტაქტი</a></li>
+              </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6 sm:py-20">
+        <section>
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">ჩემი ნამუშევრები</p>
+          <h1 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-5xl">პროექტები</h1>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-slate-400 sm:text-lg sm:leading-8">ნამუშევრები, რომლებზეც ვსწავლობ და ვვითარდები.</p>
+          <div class="mt-7 flex flex-wrap gap-2" role="group" aria-label="პროექტების ფილტრი">
+            <button type="button" class="filter-button is-active" data-project-filter="all" aria-pressed="true">ყველა</button>
+            <button type="button" class="filter-button" data-project-filter="frontend" aria-pressed="false">Frontend</button>
+            <button type="button" class="filter-button" data-project-filter="learning" aria-pressed="false">სასწავლო</button>
+          </div>
+          <p data-filter-status role="status" aria-live="polite" class="mt-3 text-sm text-slate-400">ნაჩვენებია 3 პროექტი</p>
+          <div class="mt-10 grid gap-5 md:grid-cols-2">
+            <article data-project-category="frontend learning" class="flex flex-col rounded-2xl border border-white/10 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-violet-400/40 sm:p-7">
+              <span class="text-sm font-semibold text-violet-300">პროექტი 01</span>
+              <h2 class="mt-3 text-xl font-bold text-white">FAQ Accordion Card</h2>
+              <p class="mt-3 flex-1 leading-7 text-slate-400">შექმნილია HTML-ის, CSS-ისა და JavaScript-ის გამოყენებით.</p>
+              <a href="https://butiashvili.github.io/Workout-N1/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex w-fit items-center font-semibold text-violet-300 transition hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-300">პროექტის ნახვა <span aria-hidden="true" class="ml-2">↗</span></a>
+            </article>
+            <article data-project-category="frontend" class="flex flex-col rounded-2xl border border-white/10 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-violet-400/40 sm:p-7">
+              <span class="text-sm font-semibold text-violet-300">პროექტი 02</span>
+              <h2 class="mt-3 text-xl font-bold text-white">TBC ფინალური პროექტი</h2>
+              <p class="mt-3 flex-1 leading-7 text-slate-400">შექმნილია HTML-ის, CSS-ის, JavaScript-ისა და AI ინსტრუმენტების გამოყენებით.</p>
+              <a href="https://butiashvili.github.io/final-project-tbs/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex w-fit items-center font-semibold text-violet-300 transition hover:text-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-300">პროექტის ნახვა <span aria-hidden="true" class="ml-2">↗</span></a>
+            </article>
+            <article data-project-category="learning" class="flex flex-col rounded-2xl border border-white/10 bg-slate-900 p-5 transition hover:-translate-y-1 hover:border-violet-400/40 sm:p-7 md:col-span-2">
+              <span class="text-sm font-semibold text-violet-300">პროექტი 03</span>
+              <h2 class="mt-3 text-xl font-bold text-white">პორტფოლიოს ვებ-გვერდი</h2>
+              <p class="mt-3 leading-7 text-slate-400">ვმუშაობ სრულყოფილი პორტფოლიოს შექმნაზე HTML-ის, CSS-ისა და JavaScript-ის გამოყენებით.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+      <footer class="border-t border-white/10 px-6 py-6 text-center text-sm text-slate-500">
+        <p>&copy; 2026 ნიკოლოზი. ყველა უფლება დაცულია.</p>
+      </footer>
+    </div>
+    <script src="portfolio.js"></script>
+  </body>
+</html>

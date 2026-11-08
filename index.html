@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="portfolio.css" />
+    <script>
+      if (localStorage.getItem("portfolio-theme") === "light") {
+        document.documentElement.classList.add("light-mode");
+      }
+    </script>
+    <title>მთავარი | ნიკოლოზის პორტფოლიო</title>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <div class="flex min-h-screen flex-col">
+      <header class="site-header border-b border-white/10 bg-slate-950/80">
+        <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 sm:py-6">
+          <a href="index.html" class="brand-mark" aria-label="ნიკოლოზის პორტფოლიო — მთავარი">
+            <span class="brand-symbol" aria-hidden="true">&lt;/&gt;</span><span class="brand-name">ნიკოლოზის <span>პორტფოლიო</span></span>
+          </a>
+          <div class="flex items-center gap-2 sm:order-last sm:gap-3">
+            <button type="button" data-menu-toggle aria-expanded="false" aria-controls="main-navigation" aria-label="მენიუს გახსნა" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-400 sm:hidden">
+              <svg data-menu-open-icon aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg data-menu-close-icon aria-hidden="true" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" d="m6 6 12 12M18 6 6 18" />
+              </svg>
+            </button>
+            <button type="button" data-theme-toggle aria-label="ღია რეჟიმზე გადართვა" class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-slate-300 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-400 sm:px-4">
+              <span data-theme-icon aria-hidden="true">☀</span>
+              <span data-theme-label class="hidden sm:inline">ღია რეჟიმი</span>
+            </button>
+          </div>
+          <nav id="main-navigation" aria-label="მთავარი ნავიგაცია" class="hidden w-full rounded-2xl border border-white/10 bg-white/5 p-2 sm:block sm:w-auto sm:border-0 sm:bg-transparent sm:p-0">
+              <ul class="flex flex-col gap-1 text-sm font-medium sm:flex-row sm:gap-2">
+                <li><a href="index.html" aria-current="page" class="block rounded-xl bg-violet-500/15 px-4 py-3 text-violet-300 transition hover:bg-violet-500/25 sm:rounded-full sm:py-2">მთავარი</a></li>
+                <li><a href="project.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">პროექტები</a></li>
+                <li><a href="employees.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">თანამშრომლები</a></li>
+                <li><a href="contact.html" class="block rounded-xl px-4 py-3 text-slate-300 transition hover:bg-white/10 hover:text-white sm:rounded-full sm:py-2">კონტაქტი</a></li>
+              </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-12 sm:px-6 sm:py-24">
+        <section class="home-hero relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-500/15 via-slate-900 to-slate-900 p-6 shadow-2xl shadow-violet-950/20 sm:p-14">
+          <span class="hero-orbit" aria-hidden="true"></span>
+          <p class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">მოგესალმებით ჩემს პორტფოლიოში</p>
+          <h1 class="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-6xl">ვქმნი იდეებს, რომლებიც <span class="text-violet-400">ვებად იქცევა.</span></h1>
+          <p class="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+            მე ვარ დამწყები Full Stack დეველოპერი. ვსწავლობ ვებ-ტექნოლოგიებსა და
+            AI ინსტრუმენტების გამოყენებას.
+          </p>
+          <a href="project.html" class="mt-8 inline-flex items-center rounded-full bg-violet-500 px-6 py-3 font-semibold text-white transition hover:bg-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-300 focus:ring-offset-2 focus:ring-offset-slate-900">ჩემი პროექტები <span aria-hidden="true" class="ml-2">→</span></a>
+          <a href="employees.html" class="mt-3 inline-flex items-center rounded-full border border-white/15 px-6 py-3 font-semibold text-slate-200 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-violet-300 sm:ml-3">თანამშრომლების ნახვა <span aria-hidden="true" class="ml-2">→</span></a>
+        </section>
+        <section class="mt-8 grid gap-4 sm:grid-cols-3" aria-label="პორტფოლიოს მოკლე მიმოხილვა">
+          <a href="project.html" class="summary-card rounded-2xl border border-white/10 bg-white/5 p-5">
+            <span class="text-2xl" aria-hidden="true">✦</span>
+            <p class="mt-3 text-2xl font-bold text-white">03</p>
+            <p class="mt-1 text-sm text-slate-400">პროექტი პორტფოლიოში</p>
+          </a>
+          <a href="employees.html" class="summary-card rounded-2xl border border-white/10 bg-white/5 p-5">
+            <span class="text-2xl" aria-hidden="true">◎</span>
+            <p class="mt-3 text-2xl font-bold text-white">გუნდი</p>
+            <p class="mt-1 text-sm text-slate-400">ნახე თანამშრომლების სია</p>
+          </a>
+          <a href="contact.html" class="summary-card rounded-2xl border border-white/10 bg-white/5 p-5">
+            <span class="text-2xl" aria-hidden="true">↗</span>
+            <p class="mt-3 text-2xl font-bold text-white">კონტაქტი</p>
+            <p class="mt-1 text-sm text-slate-400">დამიკავშირდი პროექტებზე</p>
+          </a>
+        </section>
+        <section class="mt-12">
+          <div class="mb-6">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-violet-300">რას ვსწავლობ</p>
+            <h2 class="mt-2 text-2xl font-bold text-white sm:text-3xl">ჩემი უნარები</h2>
+          </div>
+          <ul class="grid gap-4 sm:grid-cols-3">
+            <li class="rounded-2xl border border-white/10 bg-slate-900 p-5 sm:p-6">
+              <span class="text-sm font-semibold text-violet-300">01</span>
+              <h3 class="mt-3 text-lg font-semibold text-white">HTML5 სემანტიკა</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-400">ხელმისაწვდომი და სტრუქტურირებული ვებ-გვერდები.</p>
+            </li>
+            <li class="rounded-2xl border border-white/10 bg-slate-900 p-5 sm:p-6">
+              <span class="text-sm font-semibold text-violet-300">02</span>
+              <h3 class="mt-3 text-lg font-semibold text-white">CSS სტილები</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-400">თანამედროვე დიზაინი და რესპონსიული განლაგება.</p>
+            </li>
+            <li class="rounded-2xl border border-white/10 bg-slate-900 p-5 sm:p-6">
+              <span class="text-sm font-semibold text-violet-300">03</span>
+              <h3 class="mt-3 text-lg font-semibold text-white">JavaScript</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-400">ინტერაქტიული ვებ-გამოცდილების საფუძვლები.</p>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="border-t border-white/10 px-6 py-6 text-center text-sm text-slate-500">
+        <p>&copy; 2026 ნიკოლოზი. ყველა უფლება დაცულია.</p>
+      </footer>
+    </div>
+    <script src="portfolio.js"></script>
+  </body>
+</html>

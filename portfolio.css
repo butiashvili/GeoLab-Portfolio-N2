@@ -1,0 +1,1180 @@
+/* =========================================================
+   საერთო ცვლადები და გვერდის საბაზისო სტილები
+   ========================================================= */
+:root {
+  color-scheme: dark;
+  --page-bg: #0b1020;
+  --panel-bg: rgb(20 29 50 / 88%);
+  --card-bg: #141d32;
+  --border-color: rgb(186 199 235 / 13%);
+  --text-primary: #f1f5ff;
+  --text-secondary: #a6b1cc;
+  --accent: #b6a5ff;
+  --accent-strong: #8b79ee;
+  --accent-cool: #74d9dc;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+html.light-mode {
+  color-scheme: light;
+  --page-bg: #f4f6fc;
+  --panel-bg: rgb(255 255 255 / 92%);
+  --card-bg: #fff;
+  --border-color: rgb(75 91 135 / 16%);
+  --text-primary: #18233b;
+  --text-secondary: #64718d;
+  --accent: #6654c8;
+  --accent-strong: #5140ad;
+  --accent-cool: #147d83;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(ellipse at 10% 5%, rgb(139 121 238 / 17%), transparent 32rem),
+    radial-gradient(ellipse at 95% 55%, rgb(52 190 198 / 10%), transparent 28rem);
+  color: var(--text-primary);
+}
+
+body::before {
+  position: fixed;
+  z-index: -1;
+  top: -12rem;
+  right: -9rem;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(139 121 238 / 20%), transparent 70%);
+  content: "";
+  pointer-events: none;
+  animation: ambient-drift 16s ease-in-out infinite alternate;
+}
+
+/* =========================================================
+   თემის რეჟიმები და ფერის შეცვლის ანიმაცია
+   ========================================================= */
+html.light-mode body {
+  background-color: var(--page-bg);
+  background-image:
+    radial-gradient(ellipse at 10% 5%, rgb(139 121 238 / 10%), transparent 32rem),
+    radial-gradient(ellipse at 95% 55%, rgb(20 125 131 / 7%), transparent 28rem);
+  color: var(--text-primary);
+}
+
+html.light-mode .site-header {
+  border-color: var(--border-color);
+  background-color: rgb(255 255 255 / 86%);
+}
+
+html.light-mode .surface-panel,
+html.light-mode .surface-card,
+html.light-mode .contact-card,
+html.light-mode .code-window {
+  border-color: var(--border-color);
+  background-color: var(--card-bg);
+}
+
+html.light-mode .hero-panel {
+  border-color: rgb(139 92 246 / 16%);
+  background-image: linear-gradient(130deg, #f3e8ff, #fff 54%, #eff6ff);
+}
+
+html.light-mode .cta-panel {
+  border-color: rgb(139 92 246 / 20%);
+  background: linear-gradient(110deg, #f5f3ff, #fff);
+}
+
+html.light-mode footer {
+  border-color: var(--border-color);
+}
+
+html.light-mode [class~="border-white/10"],
+html.light-mode [class~="border-white/15"] {
+  border-color: var(--border-color);
+}
+
+html.light-mode [class~="bg-slate-950"],
+html.light-mode [class~="bg-slate-950/80"] {
+  background-color: #f4f6fc;
+}
+
+html.light-mode [class~="bg-slate-900"] {
+  background-color: var(--card-bg);
+}
+
+html.light-mode [class~="bg-white/5"] {
+  background-color: rgb(15 23 42 / 4%);
+}
+
+html.light-mode [class~="bg-white/10"],
+html.light-mode [class~="hover:bg-white/10"]:hover {
+  background-color: rgb(15 23 42 / 7%);
+}
+
+html.light-mode [class~="text-white"] {
+  color: var(--text-primary);
+}
+
+html.light-mode [class~="text-slate-100"],
+html.light-mode [class~="text-slate-300"] {
+  color: #35415c;
+}
+
+html.light-mode [class~="text-slate-400"],
+html.light-mode [class~="text-slate-500"],
+html.light-mode [class~="text-slate-600"] {
+  color: var(--text-secondary);
+}
+
+html.light-mode [class~="text-violet-300"],
+html.light-mode [class~="text-violet-400"] {
+  color: var(--accent);
+}
+
+html.light-mode [class~="text-sky-300"],
+html.light-mode [class~="text-sky-200"] {
+  color: var(--accent-cool);
+}
+
+html.light-mode [class~="bg-violet-500"] {
+  background-color: var(--accent-strong);
+}
+
+html.light-mode [class~="bg-violet-500/15"] {
+  background-color: rgb(102 84 200 / 10%);
+}
+
+html.light-mode [class~="bg-violet-500/25"]:hover {
+  background-color: rgb(102 84 200 / 16%);
+}
+
+html.light-mode [class~="text-sky-300"],
+html.light-mode [class~="text-sky-200"] {
+  color: #0369a1;
+}
+
+html.light-mode [class~="text-emerald-300"] {
+  color: #047857;
+}
+
+html.light-mode [class~="text-amber-300"] {
+  color: #b45309;
+}
+
+html.light-mode [class~="bg-violet-500"][class~="text-white"],
+html.light-mode [class~="focus:bg-violet-500"][class~="focus:text-white"] {
+  color: #fff;
+}
+
+html.light-mode [class~="bg-violet-500/5"] {
+  background-color: rgb(124 58 237 / 5%);
+}
+
+html.light-mode [class~="bg-emerald-400/10"] {
+  background-color: rgb(16 185 129 / 10%);
+}
+
+html.light-mode .gradient-text {
+  background-image: linear-gradient(110deg, #6654c8, #147d83);
+}
+
+html.theme-transition body,
+html.theme-transition body * {
+  transition:
+    background-color 450ms ease,
+    background-image 450ms ease,
+    color 450ms ease,
+    border-color 450ms ease,
+    box-shadow 450ms ease !important;
+}
+
+html.theme-transition [data-theme-icon] {
+  animation: theme-icon-turn 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =========================================================
+   საერთო ელემენტები, ბარათები და ტიპოგრაფია
+   ========================================================= */
+.site-header {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.nav-link {
+  color: #cbd5e1;
+}
+
+.nav-link:hover {
+  background-color: rgb(255 255 255 / 8%);
+  color: #fff;
+}
+
+.nav-link-active {
+  background-color: rgb(139 92 246 / 18%);
+  color: #c4b5fd;
+}
+
+html.light-mode .nav-link {
+  color: #475569;
+}
+
+html.light-mode .nav-link:hover {
+  background-color: rgb(15 23 42 / 6%);
+  color: #111827;
+}
+
+html.light-mode .nav-link-active {
+  background-color: #f3e8ff;
+  color: #6d28d9;
+}
+
+.hero-panel {
+  background-image: linear-gradient(130deg, rgb(109 40 217 / 22%), #111827 56%, #0c1222);
+}
+
+.surface-panel {
+  background-color: var(--panel-bg);
+}
+
+.surface-card {
+  box-shadow: 0 12px 32px rgb(0 0 0 / 8%);
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    background-color 450ms ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(167 139 250 / 42%);
+  box-shadow: 0 18px 38px rgb(0 0 0 / 14%);
+}
+
+html.light-mode .surface-card:hover {
+  box-shadow: 0 18px 38px rgb(71 85 105 / 12%);
+}
+
+.section-space {
+  margin-top: 5.5rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-top: 0.5rem;
+  color: var(--text-primary);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.section-description {
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.gradient-text {
+  display: block;
+  background-image: linear-gradient(110deg, #c4b5fd, #7dd3fc);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgb(167 139 250 / 18%);
+  border-radius: 9999px;
+  background-color: rgb(139 92 246 / 9%);
+  padding: 0.35rem 0.7rem;
+  color: #c4b5fd;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+html.light-mode .tech-chip {
+  border-color: rgb(124 58 237 / 15%);
+  background-color: #f5f3ff;
+  color: #6d28d9;
+}
+
+.skill-icon {
+  display: inline-flex;
+  width: 2.8rem;
+  height: 2.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+  border-radius: 0.9rem;
+  background-color: rgb(255 255 255 / 3%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.skill-icon-violet {
+  color: #c4b5fd;
+}
+
+.skill-icon-sky {
+  color: #7dd3fc;
+}
+
+.skill-icon-amber {
+  color: #fcd34d;
+}
+
+.skill-icon-emerald {
+  color: #6ee7b7;
+}
+
+.step-number {
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   პროექტების გვერდი და კატეგორიის ფილტრები
+   ========================================================= */
+.filter-button {
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 4%);
+  padding: 0.65rem 1rem;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.filter-button:hover {
+  transform: translateY(-1px);
+  border-color: rgb(167 139 250 / 40%);
+}
+
+.filter-button.is-active {
+  border-color: transparent;
+  background-color: #7c3aed;
+  color: #fff;
+}
+
+html.light-mode .filter-button {
+  background-color: #fff;
+  color: #475569;
+}
+
+html.light-mode .filter-button.is-active {
+  background-color: #7c3aed;
+  color: #fff;
+}
+
+.project-card[hidden] {
+  display: none;
+}
+
+.project-art {
+  position: relative;
+  display: flex;
+  min-height: 13rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #17172b;
+  background-image: radial-gradient(ellipse at 80% 10%, rgb(139 92 246 / 35%), transparent 55%);
+}
+
+.project-art-faq {
+  background-image:
+    radial-gradient(ellipse at 80% 20%, rgb(14 165 233 / 30%), transparent 45%),
+    linear-gradient(135deg, #19142f, #101827);
+}
+
+.project-art-tbc {
+  background-image:
+    radial-gradient(ellipse at 70% 40%, rgb(34 211 238 / 22%), transparent 50%),
+    linear-gradient(135deg, #0d1d35, #17132d);
+}
+
+.project-art-portfolio {
+  background-image:
+    radial-gradient(ellipse at 85% 10%, rgb(244 114 182 / 20%), transparent 42%),
+    linear-gradient(135deg, #211435, #121827);
+}
+
+html.light-mode .project-art {
+  background-color: #ede9fe;
+}
+
+html.light-mode .project-art-faq {
+  background-image:
+    radial-gradient(ellipse at 80% 20%, rgb(14 165 233 / 18%), transparent 45%),
+    linear-gradient(135deg, #ede9fe, #eff6ff);
+}
+
+html.light-mode .project-art-tbc {
+  background-image:
+    radial-gradient(ellipse at 70% 40%, rgb(34 211 238 / 18%), transparent 50%),
+    linear-gradient(135deg, #e0f2fe, #f5f3ff);
+}
+
+html.light-mode .project-art-portfolio {
+  background-image:
+    radial-gradient(ellipse at 85% 10%, rgb(244 114 182 / 18%), transparent 42%),
+    linear-gradient(135deg, #fce7f3, #ede9fe);
+}
+
+.project-art-wide {
+  min-height: 11rem;
+}
+
+.project-art-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 9999px;
+  background-color: rgb(8 11 22 / 35%);
+  padding: 0.4rem 0.75rem;
+  color: #e2e8f0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+html.light-mode .project-art-label {
+  border-color: rgb(100 116 139 / 16%);
+  background-color: rgb(255 255 255 / 55%);
+  color: #334155;
+}
+
+.project-number {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 0.6rem;
+  color: rgb(255 255 255 / 9%);
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  line-height: 1;
+}
+
+.faq-preview {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(62%, 18rem);
+  gap: 0.7rem;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 1rem;
+  background-color: rgb(15 23 42 / 75%);
+  padding: 1.15rem;
+  box-shadow: 0 18px 45px rgb(0 0 0 / 25%);
+  transform: rotate(-3deg);
+}
+
+.faq-preview-line {
+  height: 0.5rem;
+  width: 68%;
+  border-radius: 99px;
+  background-color: rgb(196 181 253 / 55%);
+}
+
+.faq-preview-line-long {
+  width: 88%;
+}
+
+.faq-preview-line-short {
+  width: 48%;
+  background-color: rgb(148 163 184 / 35%);
+}
+
+.faq-preview-plus {
+  position: absolute;
+  top: 0.85rem;
+  right: 1rem;
+  color: #c4b5fd;
+  font-size: 1.5rem;
+}
+
+.tbc-preview {
+  position: relative;
+  width: 12rem;
+  height: 8rem;
+  transform: rotate(7deg);
+}
+
+.tbc-preview-orb {
+  position: absolute;
+  top: 0;
+  right: 0.2rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #67e8f9, #8b5cf6);
+  box-shadow: 0 0 48px rgb(34 211 238 / 28%);
+}
+
+.tbc-preview-card {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+  width: 8rem;
+  height: 4.7rem;
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 0.8rem;
+  background: linear-gradient(135deg, rgb(255 255 255 / 24%), rgb(255 255 255 / 5%));
+  backdrop-filter: blur(8px);
+}
+
+.tbc-preview-card-small {
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: 5.5rem;
+  height: 3.4rem;
+  background: linear-gradient(135deg, rgb(167 139 250 / 55%), rgb(14 165 233 / 25%));
+}
+
+.portfolio-preview {
+  position: relative;
+  display: grid;
+  width: min(64%, 28rem);
+  height: 7rem;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.7rem;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 1rem;
+  background-color: rgb(15 23 42 / 72%);
+  padding: 0.8rem;
+  box-shadow: 0 18px 45px rgb(0 0 0 / 25%);
+  transform: rotate(-2deg);
+}
+
+.portfolio-preview-sidebar {
+  grid-row: span 2;
+  border-radius: 0.5rem;
+  background: linear-gradient(180deg, #8b5cf6, #38bdf8);
+  opacity: 0.8;
+}
+
+.portfolio-preview-block {
+  width: 75%;
+  height: 1.6rem;
+  border-radius: 0.4rem;
+  background-color: rgb(167 139 250 / 38%);
+}
+
+.portfolio-preview-block-short {
+  width: 48%;
+  height: 0.8rem;
+  background-color: rgb(148 163 184 / 28%);
+}
+
+.portfolio-preview-orb {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  width: 3.3rem;
+  height: 3.3rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #c4b5fd, #38bdf8);
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #6ee7b7;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-status > span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.project-status-progress {
+  color: #fbbf24;
+}
+
+.project-link {
+  transition: color 200ms ease, gap 200ms ease;
+}
+
+.project-link:hover {
+  color: #ddd6fe;
+}
+
+html.light-mode .project-link:hover {
+  color: #6d28d9;
+}
+
+/* =========================================================
+   კონტაქტის გვერდი და ფორმის კონტროლები
+   ========================================================= */
+.contact-icon,
+.contact-form-icon {
+  display: inline-flex;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(56 189 248 / 22%);
+  border-radius: 0.9rem;
+  background-color: rgb(56 189 248 / 9%);
+  color: #7dd3fc;
+  font-size: 1.25rem;
+}
+
+.contact-icon-violet,
+.contact-form-icon {
+  border-color: rgb(167 139 250 / 22%);
+  background-color: rgb(139 92 246 / 10%);
+  color: #c4b5fd;
+}
+
+html.light-mode .contact-icon,
+html.light-mode .contact-icon-violet,
+html.light-mode .contact-form-icon {
+  color: #6d28d9;
+}
+
+.contact-card {
+  text-decoration: none;
+}
+
+.form-input {
+  transition:
+    background-color 450ms ease,
+    color 450ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+html.light-mode .form-input {
+  border-color: var(--border-color);
+  background-color: #fff;
+  color: #111827;
+}
+
+html.light-mode .form-input::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   გვერდის შესვლისა და დეკორატიული ანიმაციები
+   ========================================================= */
+main > section,
+main > div,
+main article {
+  animation: rise-in 650ms ease-out both;
+}
+
+main > section:nth-of-type(2) {
+  animation-delay: 80ms;
+}
+
+main > section:nth-of-type(3) {
+  animation-delay: 150ms;
+}
+
+main article:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+main article:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-2rem, 2rem, 0);
+  }
+}
+
+@keyframes theme-icon-turn {
+  50% {
+    transform: rotate(160deg) scale(0.75);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ანიმაციების შეზღუდვა მომხმარებლის სისტემური პარამეტრის პატივსაცემად. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .section-space {
+    margin-top: 4rem;
+  }
+
+  .project-art {
+    min-height: 11rem;
+  }
+
+  .project-art-wide {
+    min-height: 9rem;
+  }
+}
+
+/* Shared polish for the compact, multi-page portfolio. */
+.site-header {
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  border-color: var(--border-color);
+  background-color: rgb(8 11 22 / 82%);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 8%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.brand-mark {
+  display: inline-flex;
+  min-width: max-content;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  text-decoration: none;
+}
+
+.brand-symbol {
+  display: inline-block;
+  flex: 0 0 auto;
+  color: var(--accent-cool);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.1em;
+}
+
+.brand-name span {
+  color: var(--accent);
+}
+
+html.light-mode .site-header {
+  background-color: rgb(255 255 255 / 84%);
+}
+
+html.light-mode .brand-name span {
+  color: var(--accent);
+}
+
+.brand-mark:hover .brand-symbol {
+  color: var(--accent);
+}
+
+.home-hero {
+  isolation: isolate;
+  background-image:
+    radial-gradient(ellipse at 88% 18%, rgb(116 217 220 / 14%), transparent 26rem),
+    linear-gradient(130deg, rgb(91 72 170 / 27%), #141d32 56%, #10182b);
+}
+
+.hero-orbit {
+  position: absolute;
+  z-index: -1;
+  top: -5rem;
+  right: -3rem;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid rgb(196 181 253 / 15%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(139 92 246 / 15%), transparent 68%);
+  box-shadow: 0 0 0 2rem rgb(196 181 253 / 2%), 0 0 0 4rem rgb(196 181 253 / 2%);
+  pointer-events: none;
+}
+
+html.light-mode .home-hero {
+  background-image:
+    radial-gradient(ellipse at 88% 18%, rgb(20 125 131 / 10%), transparent 26rem),
+    linear-gradient(130deg, #eeeaff, #fff 54%, #edf7f8);
+}
+
+.summary-card,
+.employee-card {
+  display: block;
+  border-color: var(--border-color);
+  background-color: var(--panel-bg);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 7%);
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    background-color 450ms ease,
+    box-shadow 220ms ease;
+}
+
+.summary-card:hover,
+.employee-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(167 139 250 / 42%);
+  box-shadow: 0 18px 38px rgb(0 0 0 / 14%);
+}
+
+.summary-card {
+  text-decoration: none;
+}
+
+.employee-avatar {
+  display: inline-flex;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(182 165 255 / 35%);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, rgb(139 121 238 / 32%), rgb(52 190 198 / 18%));
+  color: #e0d9ff;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+html.light-mode .employee-avatar {
+  border-color: rgb(124 58 237 / 18%);
+  background: linear-gradient(145deg, #ede9fe, #e0f2fe);
+  color: #6d28d9;
+}
+
+main article[hidden] {
+  display: none !important;
+}
+
+.page-progress {
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #8b5cf6, #38bdf8);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.back-to-top {
+  position: fixed;
+  z-index: 40;
+  right: max(1rem, calc((100vw - 72rem) / 2));
+  bottom: 1.25rem;
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  place-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+  transition: opacity 180ms ease, transform 180ms ease, background-color 450ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+main article,
+main li,
+main section {
+  animation: rise-in 650ms ease-out both;
+}
+
+main article:nth-child(2),
+main li:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+main article:nth-child(3),
+main li:nth-child(3) {
+  animation-delay: 150ms;
+}
+
+@media (max-width: 639px) {
+  .hero-orbit {
+    top: -7rem;
+    right: -9rem;
+    opacity: 0.7;
+  }
+
+  .summary-card {
+    padding: 1rem;
+  }
+}
+
+/* Coordinated midnight-indigo and soft-lavender theme palette. */
+body.bg-slate-950 {
+  background-color: var(--page-bg);
+}
+
+.bg-slate-950\/80 {
+  background-color: rgb(11 16 32 / 82%);
+}
+
+.bg-slate-900 {
+  background-color: var(--card-bg);
+}
+
+.bg-white\/5 {
+  background-color: rgb(186 199 235 / 5%);
+}
+
+.border-white\/10,
+.border-white\/15 {
+  border-color: var(--border-color);
+}
+
+.text-white {
+  color: var(--text-primary);
+}
+
+.text-slate-100 {
+  color: #e7ecfa;
+}
+
+.text-slate-300 {
+  color: #c1cbe1;
+}
+
+.text-slate-400,
+.text-slate-500,
+.text-slate-600 {
+  color: var(--text-secondary);
+}
+
+.text-violet-300,
+.text-violet-400 {
+  color: var(--accent);
+}
+
+.text-sky-300,
+.text-sky-200 {
+  color: var(--accent-cool);
+}
+
+.bg-violet-500 {
+  background-color: var(--accent-strong);
+}
+
+.bg-violet-500\/15 {
+  background-color: rgb(182 165 255 / 13%);
+}
+
+.hover\:bg-violet-500\/25:hover {
+  background-color: rgb(182 165 255 / 20%);
+}
+
+.bg-violet-500\/25 {
+  background-color: rgb(182 165 255 / 20%);
+}
+
+.home-hero {
+  border-color: rgb(182 165 255 / 18%);
+  background-image:
+    radial-gradient(ellipse at 88% 18%, rgb(116 217 220 / 14%), transparent 26rem),
+    linear-gradient(130deg, rgb(91 72 170 / 27%), #141d32 56%, #10182b);
+}
+
+.hero-orbit {
+  border-color: rgb(182 165 255 / 22%);
+  background: radial-gradient(circle, rgb(139 121 238 / 19%), transparent 68%);
+}
+
+.employee-avatar {
+  border-color: rgb(182 165 255 / 35%);
+  background: linear-gradient(145deg, rgb(139 121 238 / 32%), rgb(52 190 198 / 18%));
+  color: #e0d9ff;
+}
+
+.page-progress {
+  background: linear-gradient(90deg, #8b79ee, #74d9dc);
+}
+
+html.light-mode body.bg-slate-950 {
+  background-color: var(--page-bg);
+}
+
+html.light-mode .bg-slate-950\/80 {
+  background-color: rgb(248 249 255 / 88%);
+}
+
+html.light-mode .bg-slate-900 {
+  background-color: var(--card-bg);
+}
+
+html.light-mode .bg-white\/5 {
+  background-color: rgb(102 84 200 / 4%);
+}
+
+html.light-mode .border-white\/10,
+html.light-mode .border-white\/15 {
+  border-color: var(--border-color);
+}
+
+html.light-mode .text-white {
+  color: var(--text-primary);
+}
+
+html.light-mode .text-slate-100,
+html.light-mode .text-slate-300,
+html.light-mode .text-slate-200 {
+  color: #35415c;
+}
+
+html.light-mode .text-slate-400,
+html.light-mode .text-slate-500,
+html.light-mode .text-slate-600 {
+  color: var(--text-secondary);
+}
+
+html.light-mode .text-violet-300,
+html.light-mode .text-violet-400 {
+  color: var(--accent);
+}
+
+html.light-mode .text-sky-300,
+html.light-mode .text-sky-200 {
+  color: var(--accent-cool);
+}
+
+html.light-mode .bg-violet-500 {
+  background-color: var(--accent-strong);
+}
+
+html.light-mode .bg-violet-500\/15 {
+  background-color: rgb(102 84 200 / 10%);
+}
+
+html.light-mode .bg-violet-500\/25,
+html.light-mode .hover\:bg-violet-500\/25:hover {
+  background-color: rgb(102 84 200 / 16%);
+}
+
+html.light-mode .home-hero {
+  border-color: rgb(102 84 200 / 16%);
+  background-image:
+    radial-gradient(ellipse at 88% 18%, rgb(20 125 131 / 10%), transparent 26rem),
+    linear-gradient(130deg, #eeeaff, #fff 54%, #edf7f8);
+}
+
+html.light-mode .hero-orbit {
+  border-color: rgb(102 84 200 / 18%);
+  background: radial-gradient(circle, rgb(102 84 200 / 10%), transparent 68%);
+}
+
+html.light-mode .employee-avatar {
+  border-color: rgb(102 84 200 / 20%);
+  background: linear-gradient(145deg, #eeeaff, #e6f5f4);
+  color: #5140ad;
+}
+
+html.light-mode .page-progress {
+  background: linear-gradient(90deg, #6654c8, #147d83);
+}
+
+html.light-mode .filter-button.is-active {
+  background-color: var(--accent-strong);
+}
+
+html.light-mode input,
+html.light-mode textarea,
+html.light-mode select {
+  border-color: var(--border-color);
+  background-color: #fff;
+  color: var(--text-primary);
+}
+
+html.light-mode input::placeholder,
+html.light-mode textarea::placeholder {
+  color: #8994ab;
+}
+
+.filter-button.is-active {
+  border-color: transparent;
+  background-color: var(--accent-strong);
+}
+
+.tech-chip {
+  border-color: rgb(182 165 255 / 24%);
+  background-color: rgb(139 121 238 / 12%);
+  color: #d3c9ff;
+}
+
+html.light-mode .tech-chip {
+  border-color: rgb(102 84 200 / 17%);
+  background-color: #f0edff;
+  color: #5140ad;
+}
